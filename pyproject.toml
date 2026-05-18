@@ -14,7 +14,6 @@ authors = [
 readme = "README.md"
 dynamic = ["classifiers", "keywords", "license", "scripts", "version"]
 dependencies = [
-  "av",
   "bokeh >= 3.1.1",
   "coverage",
   "cython",
@@ -73,3 +72,19 @@ check-hidden = true
 ignore-regex = '^\s*"image/\S+": ".*'
 # some ad-hoc options/variable names
 ignore-words-list = 'ans,siz,nd,dirct,dircts,fo,comparitor,shfts,mapp,coo,ptd,manuel,thre,recuse'
+
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = ["osx-arm64", "linux-64"]
+
+[tool.pixi.pypi-dependencies]
+caiman = { path = ".", editable = true }
+
+[tool.pixi.environments]
+default = { solve-group = "default" }
+jupyter = { features = ["jupyter"], solve-group = "default" }
+
+[tool.pixi.tasks]
+
+[tool.pixi.dependencies]
+av = ">=17.0.1,<18"
